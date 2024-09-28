@@ -22,7 +22,7 @@
     $isPrime = true;
 
     if ($n <= 1) {
-        echo "$n không phải là số nguyên tố <br>";
+        echo "-$n không phải là số nguyên tố <br>";
     } else {
         for ($i = 2; $i <= sqrt($n); $i++) {
             if ($n % $i == 0) {
@@ -31,14 +31,14 @@
             }
         }
         if ($isPrime) {
-            echo "$n là số nguyên tố <br>";
+            echo "-$n là số nguyên tố <br>";
         } else {
-            echo "$n không phải là số nguyên tố <br>";
+            echo "-$n không phải là số nguyên tố <br>";
         }
     }
 
     $t = 0;
-    echo "Tính tổng: ";
+    echo "-Tính tổng: ";
     for($i = 0; $i < $n; $i++){
         if($i % 2 != 0 && $i >= 10 && $i <= 99) {
             $t += $i;
@@ -51,6 +51,15 @@
        $n = (int)($n / 10);  // Chia lấy phần nguyên cho 10
         $dem++;
     }
-    echo "Tổng số n = $dem";
+    echo "-Tổng số n = $dem <br>";
+
+    $n = rand(1,N);
+    echo "-Ma trận: <br>";
+    for($i = 0; $i < $dem; $i++){
+        for($j = 0; $j < $dem; $j++){
+            echo "$n ";
+        }
+        echo "<br>";
+    }
 
 ?>
