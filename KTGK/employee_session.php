@@ -53,33 +53,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Nhập Thông Tin Nhân Viên</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
-            margin: 20px;
-        }
+    body {
+        margin: 20px;
+    }
 
-        .message {
-            margin-top: 20px;
-            color: red;
-            font-style: italic;
-        }
+    label {
+        font-weight: bolder;
+    }
+
+    .message {
+        margin-top: 20px;
+        color: red;
+        font-style: italic;
+    }
     </style>
 </head>
 
-<body>
+<body class="container">
 
-    <div class="container w-50">
-        <h2 class="mt-4 text-center">Nhập Thông Tin Nhân Viên</h2>
+    <div class="container w-75">
+        <h2 class="mt-4 text-center fw-bolder">Nhập Thông Tin Nhân Viên</h2>
 
         <form method="POST" action="" class="mt-3">
             <div class="form-group">
                 <label for="maNV">Mã NV:</label>
-                <input type="text" class="form-control" id="maNV" name="maNV"
+                <input type="text" class="form-control" id="maNV" name="maNV" placeholder="Nhập mã nhân viên..."
                     value="<?php echo isset($_POST['maNV']) ? htmlspecialchars($_POST['maNV']) : ''; ?>">
             </div>
 
             <div class="form-group">
                 <label for="hoTen">Họ tên NV:</label>
-                <input type="text" class="form-control" id="hoTen" name="hoTen"
+                <input type="text" class="form-control" id="hoTen" name="hoTen" placeholder="Nhập họ tên nhân viên..."
                     value="<?php echo isset($_POST['hoTen']) ? htmlspecialchars($_POST['hoTen']) : ''; ?>">
             </div>
 
@@ -98,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group">
                 <label for="soDienThoai">Số điện thoại:</label>
                 <input type="tel" class="form-control" id="soDienThoai" name="soDienThoai"
+                    placeholder="Nhập số điện thoại..."
                     value="<?php echo isset($_POST['soDienThoai']) ? htmlspecialchars($_POST['soDienThoai']) : ''; ?>">
             </div>
 
@@ -115,31 +120,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" name="showList" class="btn btn-info">Hiển thị danh sách</button>
             <button type="submit" name="resetSession" class="btn btn-danger">Làm mới</button>
         </form>
-
         <div class="message">
             <?php echo $message; ?>
         </div>
-
-        <?php if (isset($_POST['showList'])): ?>
-            <h3 class="mt-4">Danh sách nhân viên:</h3>
-            <table class="table table-bordered mt-3">
-                <thead>
-                    <tr>
-                        <th>Mã NV</th>
-                        <th>Họ tên</th>
-                        <th>Ngày sinh</th>
-                        <th>Giới tính</th>
-                        <th>Số điện thoại</th>
-                        <th>Mã chức vụ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if (!empty($_SESSION['employees'])) {
-                        foreach ($_SESSION['employees'] as $maNV => $info) {
-                            // Kiểm tra nếu $info là mảng trước khi truy cập
-                            if (is_array($info)) {
-                                echo "<tr>
+    </div>
+    <?php if (isset($_POST['showList'])): ?>
+    <h3 class="mt-4">Danh sách nhân viên:</h3>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Mã NV</th>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>Số điện thoại</th>
+                <th>Mã chức vụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                if (!empty($_SESSION['employees'])) {
+                    foreach ($_SESSION['employees'] as $maNV => $info) {
+                        // Kiểm tra nếu $info là mảng trước khi truy cập
+                        if (is_array($info)) {
+                            echo "<tr>
                                     <td>$maNV</td>
                                     <td>{$info['hoTen']}</td>
                                     <td>{$info['ngaySinh']}</td>
@@ -147,17 +151,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <td>{$info['soDienThoai']}</td>
                                     <td>{$info['maChucVu']}</td>
                                 </tr>";
-                            }
                         }
-                    } else {
-                        echo "<tr><td colspan='6'>Danh sách nhân viên trống.</td></tr>";
                     }
-                    ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
-    </div>
-
+                } else {
+                    echo "<tr><td colspan='6'>Danh sách nhân viên trống.</td></tr>";
+                }
+                ?>
+        </tbody>
+    </table>
+    <?php endif; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
