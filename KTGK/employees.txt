@@ -1,0 +1,1 @@
+[{"maNV":"1","hoTenNV":"\u00e1d","ngaySinh":"2024-10-29","gioiTinh":"nam","soDienThoai":"123123","maChucVu":"CV002"},{"maNV":"2","hoTenNV":"\u00e1d","ngaySinh":"2024-10-29","gioiTinh":"nam","soDienThoai":"123123","maChucVu":"CV001"},{"maNV":"3","hoTenNV":"\u00e1d","ngaySinh":"2024-10-29","gioiTinh":"nam","soDienThoai":"123123","maChucVu":"CV001"}]
