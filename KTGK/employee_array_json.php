@@ -105,7 +105,7 @@ $maChucVu = $_POST['maChucVu'] ?? '';
             </div>
             <div class="form-group">
                 <label for="maChucVu">Mã chức vụ:</label>
-                <select id="maChucVu" name="maChucVu" class="form-control">
+                <select id="maChucVu" name="maChucVu" class="form-select">
                     <option value="CV001" <?php if ($maChucVu == 'CV001') echo 'selected'; ?>>Quản lý</option>
                     <option value="CV002" <?php if ($maChucVu == 'CV002') echo 'selected'; ?>>Nhân viên</option>
                 </select>
@@ -118,6 +118,8 @@ $maChucVu = $_POST['maChucVu'] ?? '';
     </div>
 
     <?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['hienThiDS'])): ?>
+    <h2 class="mt-5">Danh sách nhân viên</h2>
+    <?php if (!empty($employees)): ?>
     <div class="table-responsive">
         <table class="table table-striped mt-4">
             <thead>
@@ -131,7 +133,6 @@ $maChucVu = $_POST['maChucVu'] ?? '';
                 </tr>
             </thead>
             <tbody>
-                <?php if (!empty($employees)) : ?>
                 <?php foreach ($employees as $employee) : ?>
                 <tr>
                     <td><?php echo htmlspecialchars($employee['maNV']); ?></td>
@@ -142,12 +143,13 @@ $maChucVu = $_POST['maChucVu'] ?? '';
                     <td><?php echo htmlspecialchars($employee['maChucVu']); ?></td>
                 </tr>
                 <?php endforeach; ?>
-                <?php else : ?>
-                <?php endif; ?>
+
             </tbody>
         </table>
     </div>
+    <?php else : ?>
     <p class="alert alert-warning">Không có nhân viên nào trong danh sách.</p>
+    <?php endif; ?>
     <?php endif; ?>
 </body>
 

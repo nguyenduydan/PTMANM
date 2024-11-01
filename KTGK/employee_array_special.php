@@ -151,7 +151,7 @@ function calculateAge($birthDate)
             </div>
             <div class="form-group">
                 <label for="maChucVu">Mã chức vụ:</label>
-                <select id="maChucVu" name="maChucVu" class="form-control">
+                <select id="maChucVu" name="maChucVu" class="form-select">
                     <option value="CV001" <?php if ($maChucVu == 'CV001') echo 'selected'; ?>>Quản lý</option>
                     <option value="CV002" <?php if ($maChucVu == 'CV002') echo 'selected'; ?>>Nhân viên</option>
                     <!-- Thêm các lựa chọn khác nếu cần -->
@@ -161,7 +161,7 @@ function calculateAge($birthDate)
             <div class="form-group">
                 <button type="submit" name="themNV" class="btn btn-primary">Thêm NV</button>
                 <button type="submit" name="hienThiDS" class="btn btn-success">Hiển thị NV</button>
-                <button type="submit" name="reset" class="btn btn-danger">Reset</button>
+                <button type="submit" name="reset" class="btn btn-danger">Làm mới</button>
             </div>
         </form>
     </div>

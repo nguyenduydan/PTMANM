@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="form-group">
                 <label for="maChucVu">Mã chức vụ:</label>
-                <select class="form-control" id="maChucVu" name="maChucVu">
+                <select class="form-select" id="maChucVu" name="maChucVu">
                     <option value="">Chọn mã chức vụ</option>
                     <option value="CV01">Chức vụ 1</option>
                     <option value="CV02">Chức vụ 2</option>
@@ -124,8 +124,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php echo $message; ?>
         </div>
     </div>
-    <?php if (isset($_POST['showList'])): ?>
-    <h3 class="mt-4">Danh sách nhân viên:</h3>
+
+    <?php if (isset($_POST['showList'])):
+    ?>
+    <h2 class="mt-4">Danh sách nhân viên:</h2>
+    <?php if (!empty($_SESSION['employees'])): ?>
     <table class="table table-striped mt-3">
         <thead>
             <tr>
@@ -139,7 +142,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </thead>
         <tbody>
             <?php
-                if (!empty($_SESSION['employees'])) {
                     foreach ($_SESSION['employees'] as $maNV => $info) {
                         // Kiểm tra nếu $info là mảng trước khi truy cập
                         if (is_array($info)) {
@@ -153,12 +155,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </tr>";
                         }
                     }
-                } else {
-                    echo "<tr><td colspan='6'>Danh sách nhân viên trống.</td></tr>";
-                }
-                ?>
+
+                    ?>
         </tbody>
     </table>
+    <?php else: ?>
+    <p class="alert alert-warning">Không có nhân viên nào trong danh sách.</p>
+    <?php endif; ?>
     <?php endif; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
