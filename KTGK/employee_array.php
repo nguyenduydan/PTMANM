@@ -100,7 +100,7 @@ $maChucVu = $_POST['maChucVu'] ?? ''; // Giữ mã chức vụ đã chọn
 
 <body class="container mt-5">
     <div class="container w-50 mb-4">
-        <h2 class="mt-4 text-center fw-bolder">Nhập Thông Tin Nhân Viên</h2>
+        <h2 class="mt-4 text-center fw-bolder">Nhập Thông Tin Truyện</h2>
         <?php if (!empty($message)) : ?>
         <!-- Kiểm tra xem có thông báo hay không -->
         <div class="alert <?php echo (strpos($message, 'Error') !== false) ? 'alert-danger' : 'alert-success'; ?>">
@@ -110,14 +110,13 @@ $maChucVu = $_POST['maChucVu'] ?? ''; // Giữ mã chức vụ đã chọn
 
         <form action="" method="post" class="row g-3">
             <!-- Tạo các input ẩn cho mỗi nhân viên hiện có trong danh sách -->
-            <?php foreach ($employees as $employee) : ?>
-            <input type="hidden" name="employee_maNV[]" value="<?php echo htmlspecialchars($employee['maNV']); ?>">
-            <input type="hidden" name="employee_hoTenNV[]" value="<?= htmlspecialchars($employee['hoTenNV']); ?>">
-            <input type="hidden" name="employee_ngaySinh[]" value="<?= htmlspecialchars($employee['ngaySinh']); ?>">
-            <input type="hidden" name="employee_gioiTinh[]" value="<?= htmlspecialchars($employee['gioiTinh']); ?>">
-            <input type="hidden" name="employee_soDienThoai[]"
-                value="<?= htmlspecialchars($employee['soDienThoai']); ?>">
-            <input type="hidden" name="employee_maChucVu[]" value="<?= htmlspecialchars($employee['maChucVu']); ?>">
+            <?php foreach ($truyens as $truyen) : ?>
+            <input type="hidden" name="maTruyen_arr[]" value="<?php echo htmlspecialchars($truyen['maTruyen']); ?>">
+            <input type="hidden" name="maTruyen_arr[]" value="<?= htmlspecialchars($truyen['hoTenNV']); ?>">
+            <input type="hidden" name="maTruyen_arr[]" value="<?= htmlspecialchars($truyen['ngaySinh']); ?>">
+            <input type="hidden" name="maTruyen_arr[]" value="<?= htmlspecialchars($truyen['gioiTinh']); ?>">
+            <input type="hidden" name="maTruyen_arr[]" value="<?= htmlspecialchars($truyen['soDienThoai']); ?>">
+            <input type="hidden" name="employee_maChucVu[]" value="<?= htmlspecialchars($truyen['maChucVu']); ?>">
             <?php endforeach; ?>
 
             <!-- Các trường nhập thông tin cho nhân viên mới -->
